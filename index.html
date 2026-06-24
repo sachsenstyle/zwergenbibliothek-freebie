@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meine Fantasiewelt zum Ausmalen – Nivora Graufeder</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --night:    #0d0b1e;
+    --deep:     #1a1535;
+    --purple:   #2d1b69;
+    --violet:   #6b3fa0;
+    --lilac:    #b48fd8;
+    --gold:     #f0c040;
+    --gold-dim: #c49a20;
+    --cream:    #fdf6e3;
+    --white:    #ffffff;
+    --star:     rgba(255,255,220,0.85);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Crimson Text', Georgia, serif;
+    background: var(--night);
+    color: var(--cream);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── STARFIELD ── */
+  .stars {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .stars span {
+    position: absolute;
+    background: var(--star);
+    border-radius: 50%;
+    animation: twinkle var(--d, 3s) ease-in-out infinite alternate;
+    opacity: 0;
+  }
+  @keyframes twinkle {
+    0%   { opacity: 0; transform: scale(0.7); }
+    100% { opacity: var(--o, 0.8); transform: scale(1.2); }
+  }
+
+  /* ── LAYOUT ── */
+  .wrap { position: relative; z-index: 1; }
+
+  section { padding: 80px 24px; }
+
+  .container { max-width: 820px; margin: 0 auto; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 24px 80px;
+    background: radial-gradient(ellipse at 50% 0%, #3b1f7a 0%, #1a1535 45%, var(--night) 100%);
+  }
+
+  .brand-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid var(--gold-dim);
+    border-radius: 40px;
+    padding: 6px 20px;
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 36px;
+  }
+  .brand-badge .dot { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; }
+
+  .hero h1 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2.2rem, 6vw, 4rem);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--white);
+    text-shadow: 0 0 40px rgba(180,143,216,0.5);
+    margin-bottom: 24px;
+    max-width: 700px;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--gold);
+  }
+
+  .hero .sub {
+    font-size: 1.25rem;
+    color: var(--lilac);
+    max-width: 540px;
+    line-height: 1.7;
+    margin-bottom: 48px;
+  }
+
+  .freebie-teaser {
+    background: rgba(107,63,160,0.2);
+    border: 1px solid rgba(180,143,216,0.3);
+    border-radius: 16px;
+    padding: 28px 36px;
+    margin-bottom: 44px;
+    max-width: 560px;
+    text-align: left;
+  }
+  .freebie-teaser h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+  .freebie-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(180,143,216,0.15);
+    font-size: 1.05rem;
+    color: var(--cream);
+  }
+  .freebie-item:last-child { border-bottom: none; }
+  .freebie-icon {
+    width: 38px; height: 38px;
+    background: rgba(240,192,64,0.15);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--gold) 0%, #e8a820 100%);
+    color: var(--night);
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    padding: 18px 44px;
+    border-radius: 50px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 30px rgba(240,192,64,0.35);
+  }
+  .cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 40px rgba(240,192,64,0.5);
+  }
+  .cta-hint {
+    font-size: 0.85rem;
+    color: rgba(180,143,216,0.7);
+    margin-top: 14px;
+  }
+
+  /* ── STORY PREVIEW ── */
+  .preview {
+    background: linear-gradient(180deg, var(--night) 0%, var(--deep) 100%);
+  }
+  .preview h2 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+    color: var(--white);
+    text-align: center;
+    margin-bottom: 12px;
+  }
+  .preview .section-sub {
+    text-align: center;
+    color: var(--lilac);
+    font-size: 1.1rem;
+    margin-bottom: 52px;
+  }
+
+  .story-card {
+    background: rgba(45,27,105,0.35);
+    border: 1px solid rgba(180,143,216,0.2);
+    border-radius: 16px;
+    padding: 32px 36px;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .story-card::before {
+    content: '✦';
+    position: absolute;
+    top: 20px; right: 24px;
+    color: rgba(240,192,64,0.3);
+    font-size: 1.4rem;
+  }
+  .story-card h4 {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+  .story-card p {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: rgba(253,246,227,0.85);
+  }
+
+  .world-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 12px;
+    margin-top: 40px;
+  }
+  .world-pill {
+    background: rgba(107,63,160,0.25);
+    border: 1px solid rgba(180,143,216,0.2);
+    border-radius: 40px;
+    padding: 10px 18px;
+    font-size: 0.9rem;
+    color: var(--lilac);
+    text-align: center;
+  }
+
+  /* ── BOOK OFFER ── */
+  .book-offer {
+    background: radial-gradient(ellipse at 50% 50%, #2d1b69 0%, var(--deep) 70%);
+    text-align: center;
+  }
+  .book-offer h2 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+  .book-offer .section-sub {
+    color: var(--lilac);
+    font-size: 1.1rem;
+    margin-bottom: 48px;
+  }
+
+  .book-box {
+    background: rgba(13,11,30,0.6);
+    border: 1px solid rgba(240,192,64,0.3);
+    border-radius: 20px;
+    padding: 44px 36px;
+    max-width: 480px;
+    margin: 0 auto 40px;
+  }
+  .book-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.3rem;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .book-author {
+    font-size: 0.9rem;
+    color: var(--lilac);
+    letter-spacing: 0.1em;
+    margin-bottom: 28px;
+  }
+  .book-details {
+    list-style: none;
+    margin-bottom: 32px;
+    text-align: left;
+  }
+  .book-details li {
+    padding: 9px 0;
+    border-bottom: 1px solid rgba(180,143,216,0.12);
+    font-size: 1rem;
+    color: var(--cream);
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+  .book-details li:last-child { border-bottom: none; }
+  .book-details li span { color: var(--gold); font-size: 1rem; }
+
+  .price-block {
+    margin-bottom: 28px;
+  }
+  .price-label {
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--lilac);
+    margin-bottom: 6px;
+  }
+  .price {
+    font-family: 'Cinzel', serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .price-sub {
+    font-size: 0.85rem;
+    color: rgba(180,143,216,0.6);
+    margin-top: 6px;
+  }
+
+  .kdp-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--violet) 0%, #4a2880 100%);
+    color: var(--white);
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.06em;
+    padding: 16px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    border: 1px solid rgba(180,143,216,0.4);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(107,63,160,0.4);
+  }
+  .kdp-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(107,63,160,0.6);
+  }
+
+  /* ── OPT-IN FORM ── */
+  .optin {
+    background: linear-gradient(180deg, var(--deep) 0%, var(--night) 100%);
+    text-align: center;
+  }
+  .optin h2 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+  .optin .section-sub {
+    color: var(--lilac);
+    font-size: 1.1rem;
+    margin-bottom: 48px;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .form-box {
+    background: rgba(45,27,105,0.3);
+    border: 1px solid rgba(180,143,216,0.25);
+    border-radius: 20px;
+    padding: 44px 40px;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .freebie-choice {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+  .choice-card {
+    background: rgba(13,11,30,0.5);
+    border: 2px solid rgba(180,143,216,0.2);
+    border-radius: 14px;
+    padding: 20px 16px;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+    text-align: center;
+  }
+  .choice-card.active,
+  .choice-card:hover {
+    border-color: var(--gold);
+    background: rgba(240,192,64,0.08);
+  }
+  .choice-card .icon { font-size: 1.8rem; margin-bottom: 8px; }
+  .choice-card .label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .choice-card .desc { font-size: 0.85rem; color: var(--lilac); }
+
+  .form-group { margin-bottom: 16px; text-align: left; }
+  .form-group label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--lilac);
+    margin-bottom: 6px;
+    letter-spacing: 0.05em;
+  }
+  .form-group input {
+    width: 100%;
+    background: rgba(13,11,30,0.7);
+    border: 1px solid rgba(180,143,216,0.3);
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-family: 'Crimson Text', serif;
+    font-size: 1rem;
+    color: var(--cream);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .form-group input:focus { border-color: var(--gold); }
+  .form-group input::placeholder { color: rgba(180,143,216,0.4); }
+
+  .both-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.88rem;
+    color: var(--lilac);
+    margin-bottom: 24px;
+    cursor: pointer;
+  }
+  .both-label input[type=checkbox] { accent-color: var(--gold); }
+
+  .submit-btn {
+    width: 100%;
+    background: linear-gradient(135deg, var(--gold) 0%, #e8a820 100%);
+    color: var(--night);
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.06em;
+    padding: 17px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 24px rgba(240,192,64,0.35);
+  }
+  .submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 36px rgba(240,192,64,0.5);
+  }
+
+  .privacy-note {
+    font-size: 0.78rem;
+    color: rgba(180,143,216,0.5);
+    margin-top: 16px;
+    text-align: center;
+  }
+
+  /* ── SUCCESS ── */
+  .success-box {
+    display: none;
+    background: rgba(45,27,105,0.3);
+    border: 1px solid rgba(240,192,64,0.4);
+    border-radius: 20px;
+    padding: 52px 40px;
+    max-width: 520px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .success-box .star-big { font-size: 3rem; margin-bottom: 20px; display: block; }
+  .success-box h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.4rem;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .success-box p {
+    color: var(--lilac);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 28px;
+  }
+  .download-btns { display: flex; flex-direction: column; gap: 12px; }
+  .dl-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px 28px;
+    border-radius: 50px;
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    transition: transform 0.2s;
+    cursor: pointer;
+    border: none;
+  }
+  .dl-btn:hover { transform: translateY(-2px); }
+  .dl-pdf {
+    background: linear-gradient(135deg, var(--gold), #e8a820);
+    color: var(--night);
+  }
+  .dl-mp3 {
+    background: rgba(107,63,160,0.4);
+    border: 1px solid rgba(180,143,216,0.4);
+    color: var(--cream);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid rgba(180,143,216,0.1);
+    padding: 40px 24px;
+    text-align: center;
+    font-size: 0.82rem;
+    color: rgba(180,143,216,0.4);
+    position: relative;
+    z-index: 1;
+  }
+  footer a { color: rgba(180,143,216,0.6); text-decoration: none; }
+  footer a:hover { color: var(--gold); }
+
+  .divider {
+    text-align: center;
+    color: rgba(240,192,64,0.3);
+    font-size: 1.2rem;
+    letter-spacing: 0.5em;
+    padding: 8px 0 0;
+  }
+
+  @media (max-width: 560px) {
+    .freebie-choice { grid-template-columns: 1fr; }
+    .form-box { padding: 32px 24px; }
+    .book-box { padding: 32px 24px; }
+    .story-card { padding: 24px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Sternenhimmel -->
+<div class="stars" id="stars"></div>
+
+<div class="wrap">
+
+  <!-- ══ HERO ══ -->
+  <section class="hero">
+    <div class="brand-badge">
+      <span class="dot"></span>
+      Zwergenbibliothek · Nivora Graufeder
+      <span class="dot"></span>
+    </div>
+
+    <h1>Tauche ein in<br><em>Meine Fantasiewelt</em></h1>
+
+    <p class="sub">
+      60 magische Kurzgeschichten mit wunderschönen Ausmalbildern —
+      für kleine Entdecker, die träumen und gestalten wollen.
+    </p>
+
+    <div class="freebie-teaser">
+      <h3>✦ Dein Gratis-Geschenk wartet</h3>
+      <div class="freebie-item">
+        <div class="freebie-icon">📖</div>
+        <div><strong>Mini-Geschichte als PDF</strong><br>
+          <span style="font-size:0.9rem;color:var(--lilac)">Zum Lesen, Drucken & Ausmalen</span></div>
+      </div>
+      <div class="freebie-item">
+        <div class="freebie-icon">🎧</div>
+        <div><strong>Mini-Geschichte als MP3</strong><br>
+          <span style="font-size:0.9rem;color:var(--lilac)">Zum Anhören & Entspannen</span></div>
+      </div>
+    </div>
+
+    <a href="#optin" class="cta-btn">✦ Jetzt kostenlos sichern</a>
+    <p class="cta-hint">Kein Spam. Jederzeit abmeldbar.</p>
+  </section>
+
+  <!-- ══ STORY PREVIEW ══ -->
+  <section class="preview">
+    <div class="container">
+      <h2>Welten, die auf dich warten</h2>
+      <p class="section-sub">Jede Geschichte öffnet eine Tür — und dahinter beginnt das Abenteuer.</p>
+
+      <div class="story-card">
+        <h4>Das Drachennest</h4>
+        <p>Hoch oben auf einem Felsen lag ein großes Drachennest mit kostbaren Eiern. Der Drache bewachte sein Nest Tag und Nacht mit großer Aufmerksamkeit. Der Drache legte den Kopf schief und horchte — dann wackelte das Ei zurück, als würde jemand von innen klopfen ...</p>
+      </div>
+
+      <div class="story-card">
+        <h4>Die Bibliothek unter dem Meer</h4>
+        <p>Tief unten auf dem Meeresboden stand eine Bibliothek voller alter Geschichten. Die kleine Schildkröte Luno suchte dort nach einem Buch, das nur bei Vollmond seine Geheimnisse preisgab. Die Muschel öffnete sich langsam, und aus ihrem Inneren drang ein Licht, das Luno noch nie zuvor gesehen hatte ...</p>
+      </div>
+
+      <div class="world-grid">
+        <div class="world-pill">🐢 Fliegende Schildkröten</div>
+        <div class="world-pill">🏰 Kristallschlösser</div>
+        <div class="world-pill">🐉 Drachenstädte</div>
+        <div class="world-pill">🌊 Unterwasserwelten</div>
+        <div class="world-pill">🎈 Luftschiff-Häfen</div>
+        <div class="world-pill">🌙 Mondhafen</div>
+        <div class="world-pill">🍄 Pilzbahnhöfe</div>
+        <div class="world-pill">🦋 Schmetterlingspaläste</div>
+        <div class="world-pill">⭐ Sternenmarkt</div>
+        <div class="world-pill">🌺 Sonnenblumenstadt</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ BUCH-ANGEBOT ══ -->
+  <section class="book-offer">
+    <div class="container">
+      <h2>Das komplette Buch</h2>
+      <p class="section-sub">Für alle, die noch mehr Fantasie wollen</p>
+
+      <div class="book-box">
+        <div class="book-title">Meine Fantasiewelt zum Ausmalen</div>
+        <div class="book-author">von Nivora Graufeder · Zwergenbibliothek</div>
+
+        <ul class="book-details">
+          <li><span>✦</span> 60 magische Kurzgeschichten</li>
+          <li><span>✦</span> 60 wunderschöne Ausmalbilder</li>
+          <li><span>✦</span> 122 Seiten, Format 8,5" × 11"</li>
+          <li><span>✦</span> Perfekt für Kinder ab 5 Jahren</li>
+          <li><span>✦</span> Hochwertiger Taschenbuchdruck</li>
+        </ul>
+
+        <div class="price-block">
+          <div class="price-label">Taschenbuch · Amazon KDP</div>
+          <div class="price">14,90 €</div>
+          <div class="price-sub">inkl. MwSt. · versandkostenfrei mit Prime</div>
+        </div>
+
+        <a href="https://amazon.de" target="_blank" class="kdp-btn">Jetzt auf Amazon bestellen →</a>
+      </div>
+
+      <div class="divider">✦ · · · ✦</div>
+    </div>
+  </section>
+
+  <!-- ══ OPT-IN ══ -->
+  <section class="optin" id="optin">
+    <div class="container">
+      <h2>Dein magisches Geschenk</h2>
+      <p class="section-sub">
+        Wähle deinen Freebie — oder nimm einfach beide!<br>
+        Trag dich ein und ich schicke ihn dir sofort zu.
+      </p>
+
+      <div class="form-box" id="formBox">
+        <div class="freebie-choice">
+          <div class="choice-card active" id="choicePDF" onclick="selectFreebie('pdf')">
+            <div class="icon">📖</div>
+            <div class="label">PDF</div>
+            <div class="desc">Mini-Geschichte zum Lesen & Ausmalen</div>
+          </div>
+          <div class="choice-card" id="choiceMP3" onclick="selectFreebie('mp3')">
+            <div class="icon">🎧</div>
+            <div class="label">MP3</div>
+            <div class="desc">Mini-Geschichte zum Anhören</div>
+          </div>
+        </div>
+
+        <label class="both-label">
+          <input type="checkbox" id="bothCheck" onchange="toggleBoth()">
+          Ich möchte am liebsten <strong style="color:var(--gold);margin:0 4px">beide</strong> Freebies!
+        </label>
+
+        <!-- MailerLite Formular hier einbinden -->
+        <div class="form-group">
+          <label for="fname">Dein Vorname</label>
+          <input type="text" id="fname" placeholder="z. B. Sophie">
+        </div>
+        <div class="form-group">
+          <label for="femail">Deine E-Mail-Adresse</label>
+          <input type="email" id="femail" placeholder="deine@email.de">
+        </div>
+
+        <button class="submit-btn" onclick="handleSubmit()">
+          ✦ Jetzt kostenlos herunterladen
+        </button>
+
+        <p class="privacy-note">
+          Kein Spam. Jederzeit abmeldbar. Deine Daten sind sicher.<br>
+          Mit der Anmeldung stimmst du unserer <a href="#" style="color:var(--lilac)">Datenschutzerklärung</a> zu.
+        </p>
+      </div>
+
+      <!-- Erfolgsseite -->
+      <div class="success-box" id="successBox">
+        <span class="star-big">✨</span>
+        <h3>Die Magie ist unterwegs!</h3>
+        <p>Schau gleich in dein E-Mail-Postfach —<br>
+          dein Freebie wartet schon auf dich.</p>
+        <div class="download-btns">
+          <a href="https://drive.google.com/file/d/17YhaAzH3xJrjRFW-qjT0o3IFlaxCge59/view?usp=sharing" target="_blank" class="dl-btn dl-pdf" id="dlPDF">📖 5 Zauberhafte Ausmalbilder (PDF) herunterladen</a>
+          <a href="https://drive.google.com/file/d/1CEF53DFuO8VdWfYC_nIgE1vSWdaF_vrg/view?usp=sharing" target="_blank" class="dl-btn dl-mp3" id="dlMP3">🎧 Mini-Geschichte (MP3) herunterladen</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ══ -->
+  <footer>
+    <p>© 2026 Nivora Graufeder · Zwergenbibliothek</p>
+    <p style="margin-top:10px">
+      <a href="#">Datenschutz</a> &nbsp;·&nbsp;
+      <a href="#">Impressum</a> &nbsp;·&nbsp;
+      <a href="#">Kontakt</a>
+    </p>
+  </footer>
+
+</div><!-- /wrap -->
+
+<script>
+  // ── Sternenhimmel generieren ──
+  const starsEl = document.getElementById('stars');
+  for (let i = 0; i < 140; i++) {
+    const s = document.createElement('span');
+    const size = Math.random() * 2.5 + 0.5;
+    s.style.cssText = `
+      width:${size}px; height:${size}px;
+      top:${Math.random()*100}%;
+      left:${Math.random()*100}%;
+      --d:${(Math.random()*4+2).toFixed(1)}s;
+      --o:${(Math.random()*0.6+0.3).toFixed(2)};
+      animation-delay:${(Math.random()*5).toFixed(1)}s;
+    `;
+    starsEl.appendChild(s);
+  }
+
+  // ── Freebie-Auswahl ──
+  let selected = 'pdf';
+
+  function selectFreebie(type) {
+    selected = type;
+    document.getElementById('choicePDF').classList.toggle('active', type === 'pdf');
+    document.getElementById('choiceMP3').classList.toggle('active', type === 'mp3');
+    document.getElementById('bothCheck').checked = false;
+  }
+
+  function toggleBoth() {
+    const checked = document.getElementById('bothCheck').checked;
+    if (checked) {
+      selected = 'both';
+      document.getElementById('choicePDF').classList.add('active');
+      document.getElementById('choiceMP3').classList.add('active');
+    } else {
+      selectFreebie('pdf');
+    }
+  }
+
+  // ── Formular abschicken ──
+  function handleSubmit() {
+    const name  = document.getElementById('fname').value.trim();
+    const email = document.getElementById('femail').value.trim();
+
+    if (!name) { alert('Bitte gib deinen Vornamen ein.'); return; }
+    if (!email || !email.includes('@')) { alert('Bitte gib eine gültige E-Mail-Adresse ein.'); return; }
+
+    // Hier MailerLite API / Formular-Submit einbinden
+    // z. B. fetch('https://deine-mailerlite-url', { method:'POST', body:... })
+
+    // Download-Buttons je nach Auswahl anzeigen
+    document.getElementById('dlPDF').style.display = (selected === 'pdf' || selected === 'both') ? 'flex' : 'none';
+    document.getElementById('dlMP3').style.display = (selected === 'mp3' || selected === 'both') ? 'flex' : 'none';
+
+    document.getElementById('formBox').style.display = 'none';
+    document.getElementById('successBox').style.display = 'block';
+    document.getElementById('successBox').scrollIntoView({ behavior: 'smooth' });
+  }
+</script>
+
+</body>
+</html>
