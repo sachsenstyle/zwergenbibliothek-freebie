@@ -5,6 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Meine Fantasiewelt zum Ausmalen – Nivora Graufeder</title>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<!-- MailerLite Universal -->
+<script>
+    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+    .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+    n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+    (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+    ml('account', '2329335');
+</script>
+<!-- End MailerLite Universal -->
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -644,55 +653,10 @@
       </p>
 
       <div class="form-box" id="formBox">
-        <div class="freebie-choice">
-          <div class="choice-card active" id="choicePDF" onclick="selectFreebie('pdf')">
-            <div class="icon">📖</div>
-            <div class="label">PDF</div>
-            <div class="desc">Mini-Geschichte zum Lesen & Ausmalen</div>
-          </div>
-          <div class="choice-card" id="choiceMP3" onclick="selectFreebie('mp3')">
-            <div class="icon">🎧</div>
-            <div class="label">MP3</div>
-            <div class="desc">Mini-Geschichte zum Anhören</div>
-          </div>
-        </div>
-
-        <label class="both-label">
-          <input type="checkbox" id="bothCheck" onchange="toggleBoth()">
-          Ich möchte am liebsten <strong style="color:var(--gold);margin:0 4px">beide</strong> Freebies!
-        </label>
-
-        <!-- MailerLite Formular hier einbinden -->
-        <div class="form-group">
-          <label for="fname">Dein Vorname</label>
-          <input type="text" id="fname" placeholder="z. B. Sophie">
-        </div>
-        <div class="form-group">
-          <label for="femail">Deine E-Mail-Adresse</label>
-          <input type="email" id="femail" placeholder="deine@email.de">
-        </div>
-
-        <button class="submit-btn" onclick="handleSubmit()">
-          ✦ Jetzt kostenlos herunterladen
-        </button>
-
-        <p class="privacy-note">
-          Kein Spam. Jederzeit abmeldbar. Deine Daten sind sicher.<br>
-          Mit der Anmeldung stimmst du unserer <a href="#" style="color:var(--lilac)">Datenschutzerklärung</a> zu.
-        </p>
+        <div class="ml-embedded" data-form="3fVmwA"></div>
+        <p class="privacy-note">Kein Spam. Jederzeit abmeldbar. Deine Daten sind sicher.</p>
       </div>
 
-      <!-- Erfolgsseite -->
-      <div class="success-box" id="successBox">
-        <span class="star-big">✨</span>
-        <h3>Die Magie ist unterwegs!</h3>
-        <p>Schau gleich in dein E-Mail-Postfach —<br>
-          dein Freebie wartet schon auf dich.</p>
-        <div class="download-btns">
-          <a href="https://drive.google.com/file/d/17YhaAzH3xJrjRFW-qjT0o3IFlaxCge59/view?usp=sharing" target="_blank" class="dl-btn dl-pdf" id="dlPDF">📖 5 Zauberhafte Ausmalbilder (PDF) herunterladen</a>
-          <a href="https://drive.google.com/file/d/1CEF53DFuO8VdWfYC_nIgE1vSWdaF_vrg/view?usp=sharing" target="_blank" class="dl-btn dl-mp3" id="dlMP3">🎧 Mini-Geschichte (MP3) herunterladen</a>
-        </div>
-      </div>
 
     </div>
   </section>
